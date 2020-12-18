@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "@emotion/styled";
-import { Link } from "gatsby";
-import { Theme } from "../styles/color";
+import React from 'react';
+import styled from '@emotion/styled';
+import { Link } from 'gatsby';
+import { Theme } from '../styles/color';
 
 const Nav = () => {
   return (
@@ -20,7 +20,7 @@ const Nav = () => {
 };
 
 type StyledProps = {
-  theme?: Theme; // implicit as typescript does not read the theme frm provider
+  theme?: Theme; // implicit as typescript does not read the theme from provider
 };
 
 const FooterWrapper = styled.div<StyledProps>`
@@ -53,7 +53,7 @@ const FooterWrapper = styled.div<StyledProps>`
         position: relative;
 
         :before {
-          content: "";
+          content: '';
           position: absolute;
           bottom: 0px;
           left: 0px;

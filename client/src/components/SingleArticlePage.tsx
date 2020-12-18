@@ -1,8 +1,8 @@
-import React, { FC } from "react";
-import styled from "@emotion/styled";
-import { graphql, PageProps } from "gatsby";
-import { Theme } from "../styles/color";
-
+import React, { FC } from 'react';
+import styled from '@emotion/styled';
+import { graphql, PageProps } from 'gatsby';
+import BlockContent from '@sanity/block-content-to-react';
+import { Theme } from '../styles/color';
 // type ArticleBody = [
 //   children: { text: string }[]
 // ];
@@ -11,13 +11,20 @@ interface Props extends PageProps {
   data: {
     article: {
       title: string;
-
-      body: { children: Record<"text", string>[] }[];
+      body: [
+        {
+          _style: string;
+          _type: string;
+          _key: string;
+          children: { text: string; _key: string; _type: string; marks: [] }[];
+        }[]
+      ][];
     };
   };
 }
 
 const SingleArticlePage: FC<Props> = ({ data }) => {
+  console.log(data.article.body);
   return (
     <Wrapper>
       <div className="article__title">
@@ -25,11 +32,12 @@ const SingleArticlePage: FC<Props> = ({ data }) => {
       </div>
       <div className="article__wrapper">
         <main>
-          {data.article.body.map((bodyContent, index) => (
+          {/* {data.article.body.map((bodyContent, index) => (
             <p key={bodyContent.children[0].text} className="paragraph">
               {bodyContent.children[0].text}
             </p>
-          ))}
+          ))} */}
+          <BlockContent blocks={data.article.body} className="body" />
         </main>
       </div>
     </Wrapper>
@@ -42,9 +50,15 @@ export const query = graphql`
     article: sanityPost(slug: { current: { eq: $slug } }, title: {}) {
       title
       body {
+        style
+        _type
         children {
           text
+          _key
+          _type
+          marks
         }
+        _key
       }
     }
   }
@@ -74,9 +88,11 @@ const Wrapper = styled.div<StyledProps>`
     }
   }
 
-  & .paragraph {
-    font-size: 18px;
-    margin-bottom: 1.5rem;
+  & .body {
+    p {
+      font-size: 18px;
+      margin-bottom: 1.5rem;
+    }
   }
 `;
 export default SingleArticlePage;
