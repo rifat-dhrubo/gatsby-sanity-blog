@@ -1,24 +1,24 @@
-import styled from "@emotion/styled";
-import { graphql, Link, PageProps } from "gatsby";
-import React, { FC, useState } from "react";
-import { FaAngleDoubleDown, FaAngleDoubleUp } from "react-icons/fa";
-import { HiArrowRight } from "react-icons/hi";
-import { Button } from "../components/Buttons";
-import HeightGap from "../components/HeightGap";
-import MenuChips from "../components/MenuChips";
-import VisuallyHidden from "../components/VisuallyHidden";
-import { Theme } from "../styles/color";
-import ArticleCard from "../components/ArticleCard";
+import tw, { styled } from 'twin.macro';
+import { graphql, Link, PageProps } from 'gatsby';
+import React, { FC, useState } from 'react';
+import { FaAngleDoubleDown, FaAngleDoubleUp } from 'react-icons/fa';
+import { HiArrowRight } from 'react-icons/hi';
+import { Button } from '../components/Buttons';
+import HeightGap from '../components/HeightGap';
+import MenuChips from '../components/MenuChips';
+import VisuallyHidden from '../components/VisuallyHidden';
+import { Theme } from '../styles/color';
+import ArticleCard from '../components/ArticleCard';
 
 const TAGS = [
-  { title: "History", count: 5 },
-  { title: "Science", count: 6 },
-  { title: "Religion", count: 15 },
-  { title: "Politics", count: 4 },
-  { title: "Philosophy", count: 27 },
-  { title: "Films", count: 10 },
-  { title: "Sports", count: 2 },
-  { title: "Global", count: 8 },
+  { title: 'History', count: 5 },
+  { title: 'Science', count: 6 },
+  { title: 'Religion', count: 15 },
+  { title: 'Politics', count: 4 },
+  { title: 'Philosophy', count: 27 },
+  { title: 'Films', count: 10 },
+  { title: 'Sports', count: 2 },
+  { title: 'Global', count: 8 },
 ];
 
 type CategoryType = {
@@ -112,10 +112,10 @@ interface StyledProps {
 }
 
 const Wrapper = styled.div<StyledProps>`
+  ${tw`bg-primary text-primary`}
   margin: 0 auto;
-  background: ${(props) => props.theme.colors.darkerBlue};
+
   min-height: 100vh;
-  color: ${(props) => props.theme.colors.text};
 `;
 
 const MenuWrapper = styled.div<StyledProps>`
@@ -125,7 +125,8 @@ const MenuWrapper = styled.div<StyledProps>`
   padding: 0 32px;
 
   & .menu {
-    background: ${(props) => props.theme.colors.darkblue};
+    ${tw`bg-secondary`}
+
     padding: 32px;
     display: flex;
     flex-wrap: wrap;
@@ -142,7 +143,7 @@ const MenuWrapper = styled.div<StyledProps>`
 const ToggleMenuButton = styled(Button)<StyledProps>`
   width: 50px;
   height: 50px;
-  outline-color: ${(props) => props.theme.colors.pink};
+
   font-size: 26px;
   display: flex;
   justify-content: center;

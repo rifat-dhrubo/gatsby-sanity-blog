@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from '@emotion/styled';
+import tw, { styled } from 'twin.macro';
 import { Link } from 'gatsby';
 import { Theme } from '../styles/color';
 
@@ -24,58 +24,35 @@ type StyledProps = {
 };
 
 const FooterWrapper = styled.div<StyledProps>`
-  width: 100%;
-  background: ${(props) => props.theme.colors.darkblue};
-  color: ${(props) => props.theme.colors.pink};
-  min-height: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  ${tw`w-full h-20 flex justify-center items-center bg-secondary`}
 
   footer {
-    max-width: 1200px;
-    margin: 0 auto;
-    background: ${(props) => props.theme.colors.darkblue};
-    flex-grow: 1;
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem;
-    flex-wrap: wrap;
+    ${tw`max-w-6xl mx-auto flex flex-grow justify-between flex-wrap p-4 ring-neonPink `}
 
     & .copyright {
-      font-size: 14px;
+      ${tw`text-sm`}
     }
 
     & .links {
       a {
-        padding: 5px;
-        cursor: pointer;
-        position: relative;
+        ${tw`p-1 cursor-pointer relative`}
 
         :before {
           content: '';
-          position: absolute;
-          bottom: 0px;
-          left: 0px;
-          right: 0px;
+          ${tw`absolute bottom-0 left-0 right-0  origin-bottom-left bg-neonPink`}
+          transition: 0.3s all ease-in-out;
           height: 2px;
-          background-color: ${(props) => props.theme.colors.white};
-          transform-origin: right bottom;
           transform: scaleX(0);
-          transition: transform 0.5s ease 0s;
         }
 
         :hover {
           :before {
-            transform-origin: left bottom;
+            ${tw`origin-bottom-right`}
+
             transform: scaleX(1);
           }
         }
       }
-    }
-
-    p {
-      margin: 0;
     }
   }
 `;

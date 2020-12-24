@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import styled from '@emotion/styled';
+import tw, { styled } from 'twin.macro';
 import { graphql, PageProps } from 'gatsby';
 import BlockContent from '@sanity/block-content-to-react';
 import { Theme } from '../styles/color';
@@ -11,17 +11,20 @@ interface Props extends PageProps {
   data: {
     article: {
       title: string;
-      body: [
-        {
-          _style: string;
-          _type: string;
-          _key: string;
-          children: { text: string; _key: string; _type: string; marks: [] }[];
-        }[]
-      ][];
+      body: any;
     };
   };
 }
+
+// this needs to be dynamic based on the slug passed in via pageContext
+export const query = graphql`
+  query($slug: String!) {
+    article: sanityPost(slug: { current: { eq: $slug } }, title: {}) {
+      title
+      body: _rawBody(resolveReferences: { maxDepth: 10 })
+    }
+  }
+`;
 
 const SingleArticlePage: FC<Props> = ({ data }) => {
   console.log(data.article.body);
@@ -44,34 +47,15 @@ const SingleArticlePage: FC<Props> = ({ data }) => {
   );
 };
 
-// this needs to be dynamic based on the slug passed in via pageContext
-export const query = graphql`
-  query($slug: String!) {
-    article: sanityPost(slug: { current: { eq: $slug } }, title: {}) {
-      title
-      body {
-        style
-        _type
-        children {
-          text
-          _key
-          _type
-          marks
-        }
-        _key
-      }
-    }
-  }
-`;
-
 interface StyledProps {
   theme?: Theme;
 }
 
 const Wrapper = styled.div<StyledProps>`
-  min-height: 100vh;
-  max-width: 1200px;
-  margin: 0 auto;
+  ${tw`container mx-auto`}
+  img {
+    ${tw`mb-8`}
+  }
 
   & .article__title {
     margin-top: 64px;

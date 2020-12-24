@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable import/prefer-default-export */
-const path = require("path");
+const path = require('path');
 
 async function turnArticleIntoPages({ graphql, actions }) {
   const articlePageTemplate = path.resolve(
-    "./src/components/SingleArticlePage.tsx"
+    './src/components/SingleArticlePage.tsx'
   );
 
   const { data } = await graphql(`

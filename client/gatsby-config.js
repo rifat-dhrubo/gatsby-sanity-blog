@@ -1,16 +1,16 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable @typescript-eslint/camelcase */
-const dotenv = require("dotenv");
+const dotenv = require('dotenv');
 
-dotenv.config({ path: ".env" });
+dotenv.config({ path: '.env' });
 
 module.exports = {
   plugins: [
     {
-      resolve: "gatsby-source-sanity",
+      resolve: 'gatsby-source-sanity',
       options: {
-        projectId: "jgxllhe5",
-        dataset: "production",
+        projectId: 'jgxllhe5',
+        dataset: 'production',
         watchMode: true,
         token: process.env.SANITY_TOKEN,
       },
@@ -23,10 +23,10 @@ module.exports = {
         allExtensions: true, // defaults to false
       },
     },
-    "gatsby-plugin-emotion",
-    "gatsby-plugin-image",
-    "gatsby-plugin-react-helmet",
-    "gatsby-plugin-sitemap",
+    'gatsby-plugin-emotion',
+    'gatsby-plugin-image',
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-sitemap',
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -39,20 +39,20 @@ module.exports = {
         icon: `static/logo.png`,
       },
     },
-    "gatsby-plugin-sharp",
-    "gatsby-transformer-sharp",
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: "images",
-        path: "./src/images/",
+        name: 'images',
+        path: './src/images/',
       },
-      __key: "images",
+      __key: 'images',
     },
   ],
   siteMetadata: {
-    title: "Sulky Site",
-    siteUrl: "https://www.sulkysite.blog",
-    description: "Blazing fast sulky blogging site",
+    title: 'Sulky Site',
+    siteUrl: 'https://www.sulkysite.blog',
+    description: 'Blazing fast sulky blogging site',
   },
 };
