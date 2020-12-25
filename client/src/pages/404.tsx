@@ -1,13 +1,13 @@
 import React from 'react';
 import tw, { styled } from 'twin.macro';
 
-const about = () => {
+const FourOFour = () => {
   return (
     <Wrapper>
-      <h1>about</h1>
+      <h1>404</h1>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div``;
-export default about;
+export default FourOFour;

@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import tw, { styled } from 'twin.macro';
 import { graphql, PageProps } from 'gatsby';
 import BlockContent from '@sanity/block-content-to-react';
-import { Theme } from '../styles/color';
+import { Theme } from '../../styles/color';
 // type ArticleBody = [
 //   children: { text: string }[]
 // ];

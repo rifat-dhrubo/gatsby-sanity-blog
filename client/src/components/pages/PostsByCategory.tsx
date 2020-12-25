@@ -3,12 +3,12 @@ import { graphql, Link, PageProps } from 'gatsby';
 import React, { FC, useState } from 'react';
 import { FaAngleDoubleDown, FaAngleDoubleUp } from 'react-icons/fa';
 import { HiArrowRight } from 'react-icons/hi';
-import { Button } from '../components/Buttons';
-import HeightGap from '../components/HeightGap';
-import MenuChips from '../components/MenuChips';
-import VisuallyHidden from '../components/VisuallyHidden';
-import { Theme } from '../styles/color';
-import ArticleCard from '../components/ArticleCard';
+import { Button } from '../Buttons';
+import HeightGap from '../HeightGap';
+import MenuChips from '../MenuChips';
+import VisuallyHidden from '../VisuallyHidden';
+import { Theme } from '../../styles/color';
+import ArticleCard from '../ArticleCard';
 
 type CategoryType = {
   id: string;
@@ -43,7 +43,7 @@ interface Props extends PageProps {
 }
 
 // markup
-const IndexPage: FC<Props> = ({ data }) => {
+const PostsByCategory: FC<Props> = ({ data }) => {
   // const [toggleMenu, setToggleMenu] = useState(false);
 
   return (
@@ -98,6 +98,7 @@ const IndexPage: FC<Props> = ({ data }) => {
 export const query = graphql`
   query allCategoryQuery {
     categories: allSanityCategory {
+      totalCount
       nodes {
         id
         title
@@ -106,14 +107,19 @@ export const query = graphql`
         }
       }
     }
-    articles: allSanityPost(sort: { order: ASC, fields: _updatedAt }) {
+    articles: allSanityPost(
+      sort: { order: ASC, fields: _updatedAt }
+      filter: {
+        categories: { elemMatch: { slug: { current: { eq: "philosophy" } } } }
+      }
+    ) {
       nodes {
+        title
+        description
+        id
         slug {
           current
         }
-        id
-        title
-        description
         author {
           name
         }
@@ -185,4 +191,4 @@ const ArticleList = styled.main<StyledProps>`
   }
 `;
 
-export default IndexPage;
+export default PostsByCategory;

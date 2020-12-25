@@ -9,16 +9,19 @@ type Props = {
   title: string;
   description: string;
   slug: string;
+  author: string;
 };
 
-const ArticleCard: FC<Props> = ({ title, description, slug }) => {
+const ArticleCard: FC<Props> = ({ title, description, slug, author }) => {
   return (
     <Card to={`article/${slug}`} className="article">
       <article>
-        <h1 className="title">{title}</h1>
+        <h1 className="article__title">{title}</h1>
 
-        <p className="description">{description}</p>
-        <HeightGap gap="10px" />
+        <p className="article__description">{description}</p>
+
+        <span className="article__author">By {author}</span>
+
         <div className="arrow">
           <p>Read more</p>
           <span className="icon">
@@ -35,18 +38,25 @@ interface StyledProps {
 }
 
 const Card = styled(Link)<StyledProps>`
-  ${tw`bg-secondary p-16 rounded-3xl transition-all `}
+  ${tw`bg-secondary p-8 rounded-xl transition-all`}
 
-  & .title {
-    ${tw`text-xl`}
-  }
+  article {
+    ${tw`space-y-3 flex flex-col transition-all `}
+    & .article__title {
+      ${tw`text-xl`}
+    }
 
-  & .description {
-    ${tw`mt-4 text-base`}
+    & .article__description {
+      ${tw` text-base`}
+    }
+
+    & .article__author {
+      ${tw``}
+    }
   }
 
   & .arrow {
-    ${tw`relative inline-flex text-center`}
+    ${tw`relative inline-flex text-center items-center`}
 
     & .icon {
       ${tw`text-neonPink text-lg inline-flex ml-2 invisible`}

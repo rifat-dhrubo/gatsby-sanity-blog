@@ -4,7 +4,7 @@ const path = require('path');
 
 async function turnArticleIntoPages({ graphql, actions }) {
   const articlePageTemplate = path.resolve(
-    './src/components/SingleArticlePage.tsx'
+    './src/components/pages/SingleArticlePage.tsx'
   );
 
   const { data } = await graphql(`

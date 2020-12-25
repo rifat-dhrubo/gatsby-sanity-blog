@@ -6,12 +6,13 @@ import { Theme } from '../styles/color';
 type Props = {
   title: string;
   count: number;
+  slug: string;
 };
 
-const MenuChips: FC<Props> = ({ title, count }) => {
+const MenuChips: FC<Props> = ({ title, count, slug }) => {
   return (
     <Wrapper>
-      <Chips className="chips" to="#">
+      <Chips className="chips" to={slug}>
         <span className="title">{title} </span>
         <span className="count">{count}</span>
       </Chips>
@@ -24,6 +25,7 @@ interface StyledProps {
 }
 
 const Wrapper = styled.div`
+  min-width: 8rem;
   :hover {
     & .chips {
       transform: translateY(-2px);
