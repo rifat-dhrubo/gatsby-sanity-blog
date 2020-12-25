@@ -53,8 +53,8 @@ module.exports = {
   siteMetadata: {
     title: 'Harry Dresden',
     titleTemplate: "%s . Harry Dresden's Site",
-    description: `Worlds finest wizard for hire`,
+    description: 'Worlds finest wizard for hire',
+    siteUrl: 'https://www.sulkysite.blog',
     image: '/logo.png',
-    url: 'https://www.sulkysite.blog',
   },
 };

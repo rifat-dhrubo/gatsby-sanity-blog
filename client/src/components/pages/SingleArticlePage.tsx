@@ -32,7 +32,7 @@ export const query = graphql`
 const SingleArticlePage: FC<Props> = ({ data }) => {
   return (
     <Wrapper>
-      <SEO title={data.article.title} />
+      <SEO title={data.article.title} description={data.article.description} />
       <div className="article__title">
         <h1>{data.article.title}</h1>
       </div>
