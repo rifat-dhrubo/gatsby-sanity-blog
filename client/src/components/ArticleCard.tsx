@@ -14,7 +14,7 @@ type Props = {
 
 const ArticleCard: FC<Props> = ({ title, description, slug, author }) => {
   return (
-    <Card to={`article/${slug}`} className="article">
+    <Card to={`/article/${slug}`} className="article">
       <article>
         <h1 className="article__title">{title}</h1>
 

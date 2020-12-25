@@ -58,9 +58,10 @@ const Wrapper = styled.div<StyledProps>`
   }
 
   & .article__title {
-    margin-top: 64px;
-    padding: 96px 32px 72px;
-    text-align: center;
+    ${tw`mt-24 pt-32 pr-8 pb-20 pl-20 text-center`}
+    h1 {
+      ${tw`text-5xl`}
+    }
   }
 
   & .article__wrapper {

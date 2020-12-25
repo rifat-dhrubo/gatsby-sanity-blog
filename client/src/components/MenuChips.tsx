@@ -7,12 +7,16 @@ type Props = {
   title: string;
   count: number;
   slug: string;
+  all: boolean;
 };
 
-const MenuChips: FC<Props> = ({ title, count, slug }) => {
+const MenuChips: FC<Props> = ({ title, count, slug, all }) => {
   return (
     <Wrapper>
-      <Chips className="chips" to={slug}>
+      <Chips
+        className="chips"
+        to={`${all === true ? '/' : `/category/${slug}`}`}
+      >
         <span className="title">{title} </span>
         <span className="count">{count}</span>
       </Chips>
@@ -41,7 +45,7 @@ const Chips = styled(Link)<StyledProps>`
   font-size: clamp(1.3rem, 1.2vw, 2.5rem);
 
   & .count {
-    ${tw`py-1 px-2 text-neonPink`}
+    ${tw`py-1 px-2 text-neonPink invisible `}
   }
 `;
 

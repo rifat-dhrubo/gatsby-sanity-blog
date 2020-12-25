@@ -64,6 +64,7 @@ const IndexPage: FC<Props> = ({ data }) => {
             title="All Posts"
             slug="/"
             count={data.articles.totalCount}
+            all
           />
           {data.categories.nodes.map((tag, index) => {
             return (
@@ -72,6 +73,7 @@ const IndexPage: FC<Props> = ({ data }) => {
                 count={2}
                 key={tag.id}
                 slug={tag.slug.current}
+                all={false}
               />
             );
           })}

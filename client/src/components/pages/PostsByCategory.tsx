@@ -42,6 +42,40 @@ interface Props extends PageProps {
   };
 }
 
+export const query = graphql`
+  query categoryBySlug($slug: String!) {
+    categories: allSanityCategory {
+      totalCount
+      nodes {
+        id
+        title
+        slug {
+          current
+        }
+      }
+    }
+    articles: allSanityPost(
+      sort: { order: ASC, fields: _updatedAt }
+      filter: {
+        categories: { elemMatch: { slug: { current: { eq: $slug } } } }
+      }
+    ) {
+      nodes {
+        title
+        description
+        id
+        slug {
+          current
+        }
+        author {
+          name
+        }
+      }
+      totalCount
+    }
+  }
+`;
+
 // markup
 const PostsByCategory: FC<Props> = ({ data }) => {
   // const [toggleMenu, setToggleMenu] = useState(false);
@@ -64,6 +98,7 @@ const PostsByCategory: FC<Props> = ({ data }) => {
             title="All Posts"
             slug="/"
             count={data.articles.totalCount}
+            all
           />
           {data.categories.nodes.map((tag, index) => {
             return (
@@ -72,6 +107,7 @@ const PostsByCategory: FC<Props> = ({ data }) => {
                 count={2}
                 key={tag.id}
                 slug={tag.slug.current}
+                all={false}
               />
             );
           })}
@@ -94,40 +130,6 @@ const PostsByCategory: FC<Props> = ({ data }) => {
     </Wrapper>
   );
 };
-
-export const query = graphql`
-  query allCategoryQuery {
-    categories: allSanityCategory {
-      totalCount
-      nodes {
-        id
-        title
-        slug {
-          current
-        }
-      }
-    }
-    articles: allSanityPost(
-      sort: { order: ASC, fields: _updatedAt }
-      filter: {
-        categories: { elemMatch: { slug: { current: { eq: "philosophy" } } } }
-      }
-    ) {
-      nodes {
-        title
-        description
-        id
-        slug {
-          current
-        }
-        author {
-          name
-        }
-      }
-      totalCount
-    }
-  }
-`;
 
 interface StyledProps {
   theme?: Theme; // implicit as typescript does not read the theme from provider
