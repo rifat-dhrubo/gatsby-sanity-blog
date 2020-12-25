@@ -9,6 +9,7 @@ import MenuChips from '../components/MenuChips';
 import VisuallyHidden from '../components/VisuallyHidden';
 import { Theme } from '../styles/color';
 import ArticleCard from '../components/ArticleCard';
+import SEO from '../components/SEO';
 
 type CategoryType = {
   id: string;
@@ -48,6 +49,7 @@ const IndexPage: FC<Props> = ({ data }) => {
 
   return (
     <Wrapper>
+      <SEO />
       <HeightGap gap="100px" />
       <MenuWrapper>
         {/* <ToggleMenuButton

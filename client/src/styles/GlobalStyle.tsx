@@ -6,12 +6,14 @@ import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import { Theme } from './color';
 import stylesBase from './styleBase';
+import SEO from '../components/SEO';
 
 const GlobalStyle: FC = ({ children, ...rest }) => {
   return (
     <Wrapper {...rest}>
       <GlobalStyles />
       <Global styles={stylesBase} />
+
       <Nav />
       {children}
       <Footer />

@@ -9,6 +9,7 @@ import MenuChips from '../MenuChips';
 import VisuallyHidden from '../VisuallyHidden';
 import { Theme } from '../../styles/color';
 import ArticleCard from '../ArticleCard';
+import SEO from '../SEO';
 
 type CategoryType = {
   id: string;
@@ -82,6 +83,7 @@ const PostsByCategory: FC<Props> = ({ data }) => {
 
   return (
     <Wrapper>
+      <SEO />
       <HeightGap gap="100px" />
       <MenuWrapper>
         {/* <ToggleMenuButton

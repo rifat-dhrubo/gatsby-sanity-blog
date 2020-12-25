@@ -3,6 +3,7 @@ import tw, { styled } from 'twin.macro';
 import { graphql, PageProps } from 'gatsby';
 import BlockContent from '@sanity/block-content-to-react';
 import { Theme } from '../../styles/color';
+import SEO from '../SEO';
 // type ArticleBody = [
 //   children: { text: string }[]
 // ];
@@ -11,6 +12,7 @@ interface Props extends PageProps {
   data: {
     article: {
       title: string;
+      description: string;
       body: any;
     };
   };
@@ -21,15 +23,16 @@ export const query = graphql`
   query($slug: String!) {
     article: sanityPost(slug: { current: { eq: $slug } }, title: {}) {
       title
+      description
       body: _rawBody(resolveReferences: { maxDepth: 10 })
     }
   }
 `;
 
 const SingleArticlePage: FC<Props> = ({ data }) => {
-  console.log(data.article.body);
   return (
     <Wrapper>
+      <SEO title={data.article.title} />
       <div className="article__title">
         <h1>{data.article.title}</h1>
       </div>

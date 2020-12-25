@@ -51,8 +51,10 @@ module.exports = {
     },
   ],
   siteMetadata: {
-    title: 'Sulky Site',
-    siteUrl: 'https://www.sulkysite.blog',
-    description: 'Blazing fast sulky blogging site',
+    title: 'Harry Dresden',
+    titleTemplate: "%s . Harry Dresden's Site",
+    description: `Worlds finest wizard for hire`,
+    image: '/logo.png',
+    url: 'https://www.sulkysite.blog',
   },
 };
