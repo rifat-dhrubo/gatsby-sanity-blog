@@ -1,3 +1,2 @@
-# gatsby-sanit-blog
-# gatsby-sanit-blog
-# gatsby-sanit-blog
+# gatsby-sanity-blog
+
